@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.CustomerController"
+            prefWidth="1200" prefHeight="800"
+            style="-fx-background-color: linear-gradient(to bottom right, #0F172A, #1E293B);">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" 
+              style="-fx-background-color: rgba(255, 255, 255, 0.03); -fx-border-color: transparent transparent rgba(255, 255, 255, 0.08) transparent; -fx-border-width: 0 0 1 0; -fx-padding: 16 32;">
+            
+            <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+                <Image url="@logo.png"/>
+            </ImageView>
+            <Label text="GreenGrocer" style="-fx-font-size: 20; -fx-font-weight: 700; -fx-text-fill: #FFFFFF;"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <TextField fx:id="searchField" 
+                       promptText="🔍 Search products..." 
+                       prefWidth="260" prefHeight="40"
+                       style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: rgba(255, 255, 255, 0.1); -fx-padding: 0 16; -fx-text-fill: #FFFFFF; -fx-prompt-text-fill: rgba(255, 255, 255, 0.4);"/>
+            
+            <Region prefWidth="16"/>
+            
+            <ComboBox fx:id="sortComboBox" promptText="Sort by" prefWidth="160" prefHeight="40"
+                      style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: rgba(255, 255, 255, 0.1); -fx-text-fill: #FFFFFF;"/>
+            
+            <Region prefWidth="16"/>
+            
+            <Button text="🛒 Cart" onAction="#handleOpenCart" 
+                    style="-fx-background-color: linear-gradient(to right, #2D7A4F, #10B981); -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-padding: 6 14; -fx-cursor: hand; -fx-font-size: 11;"/>
+            <Button text="📦 Orders" onAction="#handleMyOrders" 
+                    style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-text-fill: #E2E8F0; -fx-background-radius: 8; -fx-padding: 6 10; -fx-cursor: hand; -fx-font-size: 11;"/>
+            <Button text="✉ Messages" onAction="#handleMessages"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-text-fill: #E2E8F0; -fx-background-radius: 8; -fx-padding: 6 10; -fx-cursor: hand; -fx-font-size: 11;"/>
+            <Button text="🎟 Coupons" onAction="#handleMyCoupons"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-text-fill: #E2E8F0; -fx-background-radius: 8; -fx-padding: 6 10; -fx-cursor: hand; -fx-font-size: 11;"/>
+            <Button text="👤 Profile" onAction="#handleViewProfile"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-text-fill: #E2E8F0; -fx-background-radius: 8; -fx-padding: 6 10; -fx-cursor: hand; -fx-font-size: 11;"/>
+            
+            <Region prefWidth="8"/>
+            
+            <Label fx:id="usernameLabel" text="Welcome" 
+                   style="-fx-font-size: 12; -fx-text-fill: rgba(255, 255, 255, 0.6);"/>
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: transparent; -fx-text-fill: #F87171; -fx-font-weight: 500; -fx-cursor: hand; -fx-font-size: 11;"/>
+        </HBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <HBox spacing="24" style="-fx-padding: 24 32;">
+            
+            <!-- Products Panel -->
+            <VBox spacing="16" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <Label text="Fresh Products" style="-fx-font-size: 24; -fx-font-weight: 700; -fx-text-fill: #FFFFFF;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="infoLabel" text="" style="-fx-font-size: 13; -fx-text-fill: rgba(255, 255, 255, 0.6);"/>
+                </HBox>
+                
+                <Accordion fx:id="productAccordion" VBox.vgrow="ALWAYS" 
+                           style="-fx-background-color: transparent;">
+                    <panes>
+                        <TitledPane text="🍎 Fruits" fx:id="fruitsPane" expanded="true"
+                                    style="-fx-background-color: rgba(255, 255, 255, 0.03); -fx-text-fill: #FFFFFF;">
+                            <content>
+                                <ScrollPane fitToWidth="true" prefHeight="300" 
+                                           style="-fx-background-color: transparent; -fx-background: transparent;">
+                                    <content>
+                                        <FlowPane fx:id="fruitsFlowPane" hgap="16" vgap="16" 
+                                                  style="-fx-padding: 16;"/>
+                                    </content>
+                                </ScrollPane>
+                            </content>
+                        </TitledPane>
+                        
+                        <TitledPane text="🥕 Vegetables" fx:id="vegetablesPane"
+                                    style="-fx-background-color: rgba(255, 255, 255, 0.03); -fx-text-fill: #FFFFFF;">
+                            <content>
+                                <ScrollPane fitToWidth="true" prefHeight="300"
+                                           style="-fx-background-color: transparent; -fx-background: transparent;">
+                                    <content>
+                                        <FlowPane fx:id="vegetablesFlowPane" hgap="16" vgap="16"
+                                                  style="-fx-padding: 16;"/>
+                                    </content>
+                                </ScrollPane>
+                            </content>
+                        </TitledPane>
+                    </panes>
+                </Accordion>
+            </VBox>
+
+            <!-- Product Details Panel -->
+            <VBox prefWidth="320" spacing="20" 
+                  style="-fx-background-color: rgba(255, 255, 255, 0.05); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: rgba(255, 255, 255, 0.08); -fx-padding: 24;">
+                
+                <Label text="Product Details" style="-fx-font-size: 18; -fx-font-weight: 600; -fx-text-fill: #FFFFFF;"/>
+                
+                <VBox spacing="16" VBox.vgrow="ALWAYS" alignment="CENTER">
+                    <ImageView fx:id="productImageView" fitWidth="140" fitHeight="120" preserveRatio="true"/>
+                    <Label fx:id="productNameLabel" text="Select a product" 
+                           style="-fx-font-size: 20; -fx-font-weight: 600; -fx-text-fill: #FFFFFF;"
+                           wrapText="true" alignment="CENTER"/>
+                    <Label fx:id="productPriceLabel" text="" 
+                           style="-fx-font-size: 28; -fx-font-weight: 700; -fx-text-fill: #10B981;"/>
+                    <Label fx:id="productStockLabel" text="" 
+                           style="-fx-font-size: 13; -fx-text-fill: rgba(255, 255, 255, 0.5);"/>
+                </VBox>
+                
+                <Separator style="-fx-background-color: rgba(255, 255, 255, 0.1);"/>
+                
+                <VBox spacing="16">
+                    <Label text="Quantity (kg)" style="-fx-font-size: 13; -fx-font-weight: 500; -fx-text-fill: rgba(255, 255, 255, 0.7);"/>
+                    <Spinner fx:id="kgSpinner" editable="true" prefWidth="140" prefHeight="44"
+                             style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 10;"/>
+                    
+                    <Button text="Add to Cart" 
+                            onAction="#handleAddToCart"
+                            prefWidth="272" prefHeight="48"
+                            style="-fx-background-color: linear-gradient(to right, #2D7A4F, #10B981); -fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: 600; -fx-background-radius: 12; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.4), 12, 0, 0, 4);"/>
+                    
+                    <Label fx:id="addResultLabel" text="" 
+                           style="-fx-font-size: 12; -fx-text-fill: #10B981;"
+                           wrapText="true"/>
+                </VBox>
+            </VBox>
+            
+        </HBox>
+    </center>
+
+</BorderPane>
