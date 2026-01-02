@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.CarrierController"
+            prefWidth="960" prefHeight="540">
+
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;" alignment="CENTER_LEFT">
+            <Label fx:id="usernameLabel" text="Welcome"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Refresh" onAction="#handleRefresh"/>
+            <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="12" style="-fx-padding: 10;" alignment="TOP_CENTER">
+
+            <Label text="Carrier Screen" style="-fx-font-size: 20;"/>
+
+            <!-- ✅ 1) AVAILABLE (NEW, not taken) -->
+            <Label text="Available Orders (NEW)" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+            <TableView fx:id="availableTable" prefWidth="900" prefHeight="150">
+                <columns>
+                    <TableColumn fx:id="avIdCol" text="Order ID" prefWidth="90"/>
+                    <TableColumn fx:id="avUserCol" text="Customer" prefWidth="220"/>
+                    <TableColumn fx:id="avDeliveryCol" text="Requested Delivery" prefWidth="320"/>
+                    <TableColumn fx:id="avTotalCol" text="Total (VAT inc.)" prefWidth="180"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Take Selected (Move to Current)" onAction="#handleTakeSelected"/>
+                <Label fx:id="infoLabel" text=""/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- ✅ 2) CURRENT -->
+            <Label text="Current / Selected (Taken by You)" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+            <TableView fx:id="currentTable" prefWidth="900" prefHeight="150">
+                <columns>
+                    <TableColumn fx:id="curIdCol" text="Order ID" prefWidth="90"/>
+                    <TableColumn fx:id="curUserCol" text="Customer" prefWidth="220"/>
+                    <TableColumn fx:id="curDeliveryCol" text="Requested Delivery" prefWidth="320"/>
+                    <TableColumn fx:id="curTotalCol" text="Total (VAT inc.)" prefWidth="180"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Mark Delivered (Selected Current)" onAction="#handleMarkDelivered"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- ✅ 3) COMPLETED -->
+            <Label text="Completed (Delivered by You)" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+            <TableView fx:id="completedTable" prefWidth="900" prefHeight="150">
+                <columns>
+                    <TableColumn fx:id="comIdCol" text="Order ID" prefWidth="90"/>
+                    <TableColumn fx:id="comUserCol" text="Customer" prefWidth="220"/>
+                    <TableColumn fx:id="comDeliveryCol" text="Requested Delivery" prefWidth="320"/>
+                    <TableColumn fx:id="comTotalCol" text="Total (VAT inc.)" prefWidth="180"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>
+
+
+
+
+
