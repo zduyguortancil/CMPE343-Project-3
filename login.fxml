@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="controller.LoginController"
+           style="-fx-background-color: linear-gradient(to bottom right, #0F172A, #1E293B, #334155);">
+
+    <!-- Decorative circles for modern effect -->
+    <Circle radius="200" translateX="-350" translateY="-250" 
+            style="-fx-fill: linear-gradient(to bottom right, rgba(45, 122, 79, 0.15), rgba(16, 185, 129, 0.08));"/>
+    <Circle radius="180" translateX="380" translateY="280" 
+            style="-fx-fill: linear-gradient(to bottom right, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.06));"/>
+    <Circle radius="120" translateX="300" translateY="-320" 
+            style="-fx-fill: linear-gradient(to bottom right, rgba(45, 122, 79, 0.1), rgba(16, 185, 129, 0.05));"/>
+
+    <!-- Login Card with glassmorphism -->
+    <VBox fx:id="loginCard" alignment="CENTER" spacing="0" maxWidth="420" opacity="0"
+          style="-fx-background-color: rgba(255, 255, 255, 0.08); -fx-background-radius: 24; -fx-border-radius: 24; -fx-border-color: rgba(255, 255, 255, 0.12); -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 40, 0, 0, 16);">
+        
+        <!-- Header -->
+        <VBox alignment="CENTER" spacing="8" style="-fx-padding: 16 40 16 40;">
+            <ImageView fx:id="logoImage" fitWidth="140" fitHeight="140" preserveRatio="true" opacity="0">
+                <Image url="@logo.png"/>
+            </ImageView>
+            <Label fx:id="titleLabel" text="GreenGrocer" opacity="0"
+                   style="-fx-font-size: 32; -fx-font-weight: 700; -fx-text-fill: #FFFFFF;"/>
+            <Label fx:id="subtitleLabel" text="Fresh produce, delivered to your door" opacity="0"
+                   style="-fx-font-size: 14; -fx-text-fill: rgba(255, 255, 255, 0.6);"/>
+        </VBox>
+
+        <!-- Form -->
+        <VBox fx:id="formSection" alignment="CENTER" spacing="20" style="-fx-padding: 0 48 40 48;" opacity="0">
+            
+            <VBox spacing="8" alignment="CENTER_LEFT" maxWidth="320">
+                <Label text="Username" style="-fx-font-size: 13; -fx-font-weight: 500; -fx-text-fill: rgba(255, 255, 255, 0.7);"/>
+                <TextField fx:id="usernameField" 
+                           promptText="Enter your username"
+                           prefHeight="48"
+                           style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(255, 255, 255, 0.15); -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-prompt-text-fill: rgba(255, 255, 255, 0.4);"/>
+            </VBox>
+            
+            <VBox spacing="8" alignment="CENTER_LEFT" maxWidth="320">
+                <Label text="Password" style="-fx-font-size: 13; -fx-font-weight: 500; -fx-text-fill: rgba(255, 255, 255, 0.7);"/>
+                <PasswordField fx:id="passwordField" 
+                               promptText="Enter your password"
+                               prefHeight="48"
+                               style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(255, 255, 255, 0.15); -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-prompt-text-fill: rgba(255, 255, 255, 0.4);"/>
+            </VBox>
+
+            <VBox spacing="16" alignment="CENTER" style="-fx-padding: 8 0 0 0;">
+                <Button text="Sign In" 
+                        onAction="#handleLogin" 
+                        prefWidth="320" prefHeight="48"
+                        style="-fx-background-color: linear-gradient(to right, #2D7A4F, #10B981); -fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: 600; -fx-background-radius: 12; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.4), 12, 0, 0, 4);"/>
+                
+                <HBox alignment="CENTER" spacing="8">
+                    <Label text="Don't have an account?" style="-fx-text-fill: rgba(255, 255, 255, 0.5); -fx-font-size: 13;"/>
+                    <Button text="Register" 
+                            onAction="#handleOpenRegister"
+                            style="-fx-background-color: transparent; -fx-text-fill: #10B981; -fx-font-weight: 600; -fx-font-size: 13; -fx-cursor: hand; -fx-padding: 0;"/>
+                </HBox>
+            </VBox>
+
+            <Label fx:id="messageLabel" text="" 
+                   style="-fx-text-fill: #F87171; -fx-font-size: 13;"
+                   wrapText="true" maxWidth="320"/>
+        </VBox>
+
+        <!-- Footer -->
+        <VBox alignment="CENTER" style="-fx-padding: 20; -fx-background-color: rgba(0, 0, 0, 0.15); -fx-background-radius: 0 0 24 24;">
+            <Label text="Demo: cust/cust • carr/carr • own/own"
+                   style="-fx-font-size: 11; -fx-text-fill: rgba(255, 255, 255, 0.35);"/>
+        </VBox>
+    </VBox>
+
+</StackPane>
