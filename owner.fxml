@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.OwnerController"
+            prefWidth="1000" prefHeight="650">
+
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;" alignment="CENTER_LEFT">
+            <Label fx:id="usernameLabel" text="Welcome" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Refresh" onAction="#handleRefresh"/>
+            <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="12" style="-fx-padding: 10;">
+
+            <!-- ✅ ADD PRODUCT -->
+            <Label text="Add New Product" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="newNameField" promptText="e.g. Apple (1kg)"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Type:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <TextField fx:id="newTypeField" promptText="e.g. fruit"
+                           GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Price:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="newPriceField" promptText="e.g. 45"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Stock (kg):" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <TextField fx:id="newStockField" promptText="e.g. 30"
+                           GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="Threshold:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="newThresholdField" promptText="e.g. 5"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Image:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="3" alignment="CENTER_LEFT">
+                    <Button text="Choose..." onAction="#handleChooseImage"/>
+                    <Label fx:id="imageNameLabel" text="No file selected"/>
+                </HBox>
+
+                <HBox spacing="10" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="4"
+                      alignment="CENTER_LEFT">
+                    <Button text="Add Product" onAction="#handleAddProduct"/>
+                </HBox>
+            </GridPane>
+
+            <Separator/>
+
+            <Label text="All Products" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="productTable" prefHeight="320">
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="nameCol" text="Name" prefWidth="260"/>
+                    <TableColumn fx:id="typeCol" text="Type" prefWidth="110"/>
+                    <TableColumn fx:id="priceCol" text="Price" prefWidth="110"/>
+                    <TableColumn fx:id="stockCol" text="Stock" prefWidth="110"/>
+                    <TableColumn fx:id="thresholdCol" text="Threshold" prefWidth="110"/>
+                </columns>
+            </TableView>
+
+            <Label text="Selected Product Actions" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Add Stock (kg):"/>
+                <TextField fx:id="addStockField" promptText="e.g. 2.5" prefWidth="110"/>
+                <Button text="Add" onAction="#handleAddStock"/>
+
+                <Label text="New Price:"/>
+                <TextField fx:id="priceField" promptText="e.g. 30" prefWidth="110"/>
+                <Button text="Update Price" onAction="#handleUpdatePrice"/>
+
+                <Label text="New Threshold:"/>
+                <TextField fx:id="thresholdField" promptText="e.g. 5" prefWidth="110"/>
+                <Button text="Update Threshold" onAction="#handleUpdateThreshold"/>
+            </HBox>
+
+            <Label text="Low Stock Products (stock &lt;= threshold)" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="lowStockTable" prefHeight="180">
+                <columns>
+                    <TableColumn fx:id="lsIdCol" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="lsNameCol" text="Name" prefWidth="300"/>
+                    <TableColumn fx:id="lsStockCol" text="Stock" prefWidth="120"/>
+                    <TableColumn fx:id="lsThresholdCol" text="Threshold" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="infoLabel" text=""/>
+
+        </VBox>
+    </center>
+
+</BorderPane>
+
