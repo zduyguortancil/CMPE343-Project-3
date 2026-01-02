@@ -1,0 +1,599 @@
+/* 
+ * GreenGrocer Premium Dark UI Design System
+ * Modern Dark Theme with Glassmorphism
+ */
+
+/* ============================================
+   CSS VARIABLES - Dark Theme Design Tokens
+   ============================================ */
+.root {
+    /* Typography */
+    -fx-font-family: 'Segoe UI Emoji', 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    -fx-font-size: 14px;
+
+    /* Primary Colors */
+    -primary-color: #10B981;
+    -primary-hover: #059669;
+
+    /* Background Colors */
+    -fx-background-color: #0F172A;
+}
+
+/* ============================================
+   TYPOGRAPHY - Dark Theme
+   ============================================ */
+.label {
+    -fx-text-fill: #E2E8F0;
+    -fx-font-smoothing-type: lcd;
+}
+
+/* ============================================
+   BUTTONS - Dark Theme
+   ============================================ */
+.button {
+    -fx-background-color: linear-gradient(to right, #2D7A4F, #10B981);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.3), 8, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #236140, #059669);
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.5), 12, 0, 0, 4);
+}
+
+.button:pressed {
+    -fx-background-color: #059669;
+}
+
+.button:disabled {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: rgba(255, 255, 255, 0.3);
+    -fx-effect: none;
+}
+
+/* ============================================
+   TEXT INPUTS - Dark Theme
+   ============================================ */
+.text-field,
+.password-field,
+.text-area {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.4);
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused {
+    -fx-border-color: #10B981;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.2), 8, 0, 0, 0);
+}
+
+.text-area .content {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================
+   TABLES - Dark Theme
+   ============================================ */
+.table-view {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 1;
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 12 12 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.08) transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 14 16 14 16;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+}
+
+.table-view .table-cell {
+    -fx-padding: 14 16 14 16;
+    -fx-text-fill: #E2E8F0;
+    -fx-font-size: 14px;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.05) transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(16, 185, 129, 0.15);
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-row-cell:odd:selected {
+    -fx-background-color: rgba(16, 185, 129, 0.15);
+}
+
+/* ============================================
+   TAB PANE - Dark Theme
+   ============================================ */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 16 0;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .headers-region {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 12;
+    -fx-padding: 4;
+}
+
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+    -fx-background-insets: 0;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-font-weight: 500;
+    -fx-font-size: 13px;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: rgba(16, 185, 129, 0.2);
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #10B981;
+    -fx-font-weight: 600;
+}
+
+.tab-pane .tab:hover:not(:selected) {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: rgba(255, 255, 255, 0.02);
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: rgba(255, 255, 255, 0.06);
+    -fx-border-width: 1;
+    -fx-padding: 0;
+}
+
+.tab-pane .tab .tab-close-button {
+    -fx-background-color: transparent;
+}
+
+/* ============================================
+   ACCORDION & TITLED PANE - Dark Theme
+   ============================================ */
+.accordion {
+    -fx-background-color: transparent;
+}
+
+.titled-pane {
+    -fx-background-color: transparent;
+}
+
+.titled-pane>.title {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 1;
+    -fx-padding: 16 20 16 20;
+}
+
+.titled-pane>.title:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+}
+
+.titled-pane>.title>.text {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-fill: #FFFFFF;
+}
+
+.titled-pane>.title>.arrow-button {
+    -fx-background-color: transparent;
+}
+
+.titled-pane>.title>.arrow-button .arrow {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-shape: "M 0 0 L 6 4 L 0 8 Z";
+}
+
+.titled-pane:expanded>.title {
+    -fx-background-color: linear-gradient(to right, #2D7A4F, #10B981);
+    -fx-border-color: transparent;
+}
+
+.titled-pane:expanded>.title>.text {
+    -fx-fill: #FFFFFF;
+}
+
+.titled-pane:expanded>.title>.arrow-button .arrow {
+    -fx-background-color: #FFFFFF;
+}
+
+.titled-pane>.content {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-border-color: rgba(255, 255, 255, 0.06);
+    -fx-border-radius: 0 0 12 12;
+    -fx-background-radius: 0 0 12 12;
+    -fx-padding: 16;
+}
+
+/* ============================================
+   SCROLL PANE - Dark Theme
+   ============================================ */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane>.viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-radius: 4;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 4;
+}
+
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+}
+
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ============================================
+   COMBO BOX - Dark Theme
+   ============================================ */
+.combo-box {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+.combo-box:focused {
+    -fx-border-color: #10B981;
+    -fx-border-width: 2;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 10 14 10 14;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 12 0 0;
+}
+
+.combo-box .arrow {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1E293B;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 20, 0, 0, 8);
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 10;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 10 14 10 14;
+    -fx-text-fill: #E2E8F0;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: rgba(16, 185, 129, 0.2);
+    -fx-text-fill: #10B981;
+}
+
+/* ============================================
+   SPINNER - Dark Theme
+   ============================================ */
+.spinner {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+
+.spinner:focused {
+    -fx-border-color: #10B981;
+}
+
+.spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 10 12 10 12;
+    -fx-text-fill: #FFFFFF;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 0 8 8 0;
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   CHARTS - Dark Theme
+   ============================================ */
+.chart {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-padding: 10 0 0 0;
+}
+
+.chart-legend-item {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+}
+
+.axis {
+    -fx-tick-label-fill: rgba(255, 255, 255, 0.5);
+}
+
+.axis-label {
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-font-weight: 500;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: rgba(255, 255, 255, 0.05);
+}
+
+/* Pie Chart Colors */
+.default-color0.chart-pie {
+    -fx-pie-color: #10B981;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #3B82F6;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #F59E0B;
+}
+
+.default-color3.chart-pie {
+    -fx-pie-color: #8B5CF6;
+}
+
+.default-color4.chart-pie {
+    -fx-pie-color: #EF4444;
+}
+
+.chart-pie-label {
+    -fx-fill: rgba(255, 255, 255, 0.7);
+    -fx-font-size: 12px;
+}
+
+/* Bar Chart Colors */
+.default-color0.chart-bar {
+    -fx-bar-fill: #10B981;
+}
+
+.default-color1.chart-bar {
+    -fx-bar-fill: #3B82F6;
+}
+
+.default-color2.chart-bar {
+    -fx-bar-fill: #F59E0B;
+}
+
+.default-color3.chart-bar {
+    -fx-bar-fill: #8B5CF6;
+}
+
+.default-color4.chart-bar {
+    -fx-bar-fill: #EF4444;
+}
+
+/* ============================================
+   PRODUCT CARDS - Dark Theme
+   ============================================ */
+.product-card {
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+.product-card:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-border-color: rgba(16, 185, 129, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.2), 16, 0, 0, 6);
+}
+
+/* ============================================
+   LIST VIEW - Dark Theme
+   ============================================ */
+.list-view {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.06);
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E2E8F0;
+    -fx-padding: 10 14;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: rgba(16, 185, 129, 0.15);
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ============================================
+   SEPARATOR - Dark Theme
+   ============================================ */
+.separator {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.separator .line {
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   DIALOGS - Dark Theme
+   ============================================ */
+.dialog-pane {
+    -fx-background-color: #1E293B;
+    -fx-background-radius: 16;
+    -fx-padding: 24;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: transparent;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.dialog-pane .content {
+    -fx-padding: 16 0 16 0;
+}
+
+.dialog-pane .content .label {
+    -fx-text-fill: #E2E8F0;
+}
+
+.dialog-pane .button-bar {
+    -fx-padding: 16 0 0 0;
+}
+
+/* ============================================
+   TOOLTIP - Dark Theme
+   ============================================ */
+.tooltip {
+    -fx-background-color: #334155;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+    -fx-font-size: 12px;
+}
+
+/* ============================================
+   FLOW PANE
+   ============================================ */
+.flow-pane {
+    -fx-hgap: 16;
+    -fx-vgap: 16;
+    -fx-padding: 8;
+}

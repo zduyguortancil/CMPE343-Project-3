@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MyOrdersController"
+            prefWidth="1000" prefHeight="700"
+            style="-fx-background-color: linear-gradient(to bottom right, #0F172A, #1E293B);">
+
+    <!-- Header -->
+    <top>
+        <HBox spacing="16" alignment="CENTER_LEFT"
+              style="-fx-background-color: rgba(255, 255, 255, 0.03); -fx-border-color: transparent transparent rgba(255, 255, 255, 0.08) transparent; -fx-border-width: 0 0 1 0; -fx-padding: 20 32;">
+            <Label text="📦" style="-fx-font-size: 28;"/>
+            <VBox spacing="2">
+                <Label fx:id="titleLabel" text="My Orders" 
+                       style="-fx-font-size: 20; -fx-font-weight: 700; -fx-text-fill: #FFFFFF;"/>
+                <Label text="Track your orders and deliveries" 
+                       style="-fx-font-size: 13; -fx-text-fill: rgba(255, 255, 255, 0.5);"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="↻ Refresh" onAction="#handleRefresh"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-text-fill: #E2E8F0; -fx-border-color: rgba(255, 255, 255, 0.1); -fx-border-width: 1; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+            <Button text="← Back" onAction="#handleClose"
+                    style="-fx-background-color: transparent; -fx-text-fill: rgba(255, 255, 255, 0.5); -fx-font-weight: 500; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 24 32;">
+            
+            <TabPane fx:id="ordersTabPane" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                
+                <!-- All Orders Tab -->
+                <Tab text="📋 All Orders" closable="false">
+                    <VBox spacing="16" style="-fx-padding: 20; -fx-background-color: rgba(255, 255, 255, 0.02);">
+                        <Label fx:id="orderInfoLabel" text="" style="-fx-font-size: 13; -fx-text-fill: rgba(255, 255, 255, 0.5);"/>
+                        
+                        <TableView fx:id="orderTable" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                            <columns>
+                                <TableColumn fx:id="idCol" text="Order #" prefWidth="80"/>
+                                <TableColumn fx:id="statusCol" text="Status" prefWidth="120"/>
+                                <TableColumn fx:id="createdCol" text="Created" prefWidth="150"/>
+                                <TableColumn fx:id="deliveryCol" text="Requested Delivery" prefWidth="150"/>
+                                <TableColumn fx:id="totalCol" text="Total" prefWidth="120"/>
+                                <TableColumn fx:id="carrierCol" text="Carrier" prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                        
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <Button text="View Details" onAction="#handleViewDetails"
+                                    style="-fx-background-color: linear-gradient(to right, #2D7A4F, #10B981); -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                            <Button text="Cancel Order" onAction="#handleCancelOrder"
+                                    style="-fx-background-color: rgba(248, 113, 113, 0.1); -fx-text-fill: #F87171; -fx-border-color: rgba(248, 113, 113, 0.3); -fx-border-width: 1; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                            <Button text="Download Invoice" onAction="#handleViewInvoice"
+                                    style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-text-fill: #E2E8F0; -fx-border-color: rgba(255, 255, 255, 0.1); -fx-border-width: 1; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                
+                <!-- Deliveries Tab -->
+                <Tab text="✅ Completed Deliveries" closable="false">
+                    <VBox spacing="16" style="-fx-padding: 20; -fx-background-color: rgba(255, 255, 255, 0.02);">
+                        <Label fx:id="deliveryInfoLabel" text="" style="-fx-font-size: 13; -fx-text-fill: rgba(255, 255, 255, 0.5);"/>
+                        
+                        <TableView fx:id="deliveriesTable" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                            <columns>
+                                <TableColumn fx:id="delIdCol" text="Order #" prefWidth="100"/>
+                                <TableColumn fx:id="delCarrierCol" text="Carrier" prefWidth="150"/>
+                                <TableColumn fx:id="delDateCol" text="Delivered At" prefWidth="180"/>
+                                <TableColumn fx:id="delTotalCol" text="Total" prefWidth="120"/>
+                                <TableColumn fx:id="delRatingCol" text="Rating" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                        
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <Button text="⭐ Rate Carrier" onAction="#handleRateCarrier"
+                                    style="-fx-background-color: linear-gradient(to right, #D97706, #F59E0B); -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                
+                <!-- Status History Tab -->
+                <Tab text="📜 Order History" closable="false">
+                    <VBox spacing="16" style="-fx-padding: 20; -fx-background-color: rgba(255, 255, 255, 0.02);">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <Label text="Select Order:" style="-fx-font-weight: 500; -fx-text-fill: rgba(255, 255, 255, 0.7);"/>
+                            <ComboBox fx:id="orderComboBox" prefWidth="280" onAction="#handleLoadHistory"
+                                      style="-fx-background-color: rgba(255, 255, 255, 0.06);"/>
+                        </HBox>
+                        
+                        <Label fx:id="historyInfoLabel" text="" style="-fx-font-size: 13; -fx-text-fill: rgba(255, 255, 255, 0.5);"/>
+                        
+                        <TableView fx:id="historyTable" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                            <columns>
+                                <TableColumn fx:id="histStatusCol" text="Status" prefWidth="150"/>
+                                <TableColumn fx:id="histTimeCol" text="Changed At" prefWidth="200"/>
+                                <TableColumn fx:id="histByCol" text="Changed By" prefWidth="150"/>
+                                <TableColumn fx:id="histNotesCol" text="Notes" prefWidth="250"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+                
+            </TabPane>
+            
+        </VBox>
+    </center>
+
+</BorderPane>
